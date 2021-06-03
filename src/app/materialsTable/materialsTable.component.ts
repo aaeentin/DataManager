@@ -8,12 +8,13 @@ import { MatTableModule } from '@angular/material/table'
 })
 export class MaterialsTableComponent implements OnInit {
   //input - data for table (array of jsons)
-  @Input() data: any | undefined;
-  @Input() columns: any | undefined;
+  @Input() data!: any;
+  @Input() columns!: any;
   //output - changes, selects
   
   constructor() { }
   ngOnInit() {
+    console.log("init table")
   }
 
   clickedRows = new Set<any>();

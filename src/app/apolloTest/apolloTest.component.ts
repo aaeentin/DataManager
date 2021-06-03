@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Subscription } from 'rxjs';
@@ -22,7 +22,7 @@ export class ApolloTestComponent implements OnInit {
   loading!: boolean;
 
   ngOnInit() {
-    
+    console.log("init apollo")
     this.query = this.apollo.watchQuery<any>({
       query: this.graphQ
     });
@@ -34,6 +34,19 @@ export class ApolloTestComponent implements OnInit {
       this.columns.emit(Object.keys(data.pubtran_last_track_data[0]));
      });
     
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.query = this.apollo.watchQuery<any>({
+      query: this.graphQ
+    });
+    this.querySubscription = this.query
+      .valueChanges
+      .subscribe(({ data, loading }) => {
+      //TODO - if resposne is empty
+      this.data.emit(data.pubtran_last_track_data);
+      this.columns.emit(Object.keys(data.pubtran_last_track_data[0]));
+     });
   }
 
   refresh() {

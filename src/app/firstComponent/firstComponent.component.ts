@@ -9,6 +9,14 @@ export class FirstComponentComponent implements OnInit {
   data = [];
   columns = [];
   constructor() { }
+  query_tmp = `
+    query MyQuery {
+      pubtran_last_track_data {
+        timestamp
+        route_id
+        gps_speed
+      }
+    }`;
 
   query = gql`
     query MyQuery {
@@ -20,14 +28,13 @@ export class FirstComponentComponent implements OnInit {
     }`;
 
   ngOnInit() {
+    console.log("init first")
   }
 
   getData(data: any)
   {
     //console.log("data")
     this.data = data;
-    console.log("data received from apollo")
-    console.log(data)
   }
   getColumns(columns: any)
   {

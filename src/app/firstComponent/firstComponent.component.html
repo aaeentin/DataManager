@@ -2,6 +2,12 @@
   Table
 </h2>
 
+<input id="query_tmp" type="text" formControlName="query_tmp">
+
+{{query_tmp}}
+
+
+
 <app-apolloTest
   [graphQ] = "query"
   (data) = "getData($event)" 
