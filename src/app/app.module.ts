@@ -7,12 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloTestComponent } from './apolloTest/apolloTest.component';
 import { FirstComponentComponent } from './firstComponent/firstComponent.component';
 //import { AppRoutingModule } from './app-routing.module';
-
+import { MaterialsTableComponent } from './materialsTable/materialsTable.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table'  
 @NgModule({
-  declarations: [		
+  declarations: [			
     AppComponent,
     ApolloTestComponent,
-    FirstComponentComponent
+    FirstComponentComponent,
+      MaterialsTableComponent
    ],
   imports: [
     BrowserModule,
@@ -20,9 +23,12 @@ import { FirstComponentComponent } from './firstComponent/firstComponent.compone
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'apollo', component: ApolloTestComponent },
-      { path: 'first', component: FirstComponentComponent }
+      { path: 'first', component: FirstComponentComponent },
+      { path: 'table', component: MaterialsTableComponent }
     ],
-    { enableTracing: true })
+    { enableTracing: true }),
+    BrowserAnimationsModule,
+    MatTableModule
 
   ],
   providers: [],

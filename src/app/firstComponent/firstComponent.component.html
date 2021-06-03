@@ -1,3 +1,14 @@
-<p>
-  firstComponent works!
-</p>
+<h2>
+  Table
+</h2>
+
+<app-apolloTest
+  [graphQ] = "query"
+  (data) = "getData($event)" 
+  (columns) = "getColumns($event)">
+</app-apolloTest>
+
+<app-materialsTable
+  [data] = "data"
+  [columns] = "columns">
+</app-materialsTable>
